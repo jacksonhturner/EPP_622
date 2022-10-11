@@ -1,10 +1,10 @@
-## EPP 622 Assignment 2
+# EPP 622 Assignment 2
 
 The purpose of this exercise is to call variants and generate some basic statistics for four samples. 
 
 # Step 1: FastQC
 
-We’re analyzing four different fastq files that are listed in the assignment, SRR6922141_1, SRR6922185_1, SRR6922187_1, and SRR6922236_1. We want to know first if these sequences are high quality enough to analyze. If they’re fragmented or inaccurate, then we would normally exclude them from data analysis. To check to see if they are usable,  use FastQC (version 0.11.9) to examine their quality and then download them onto our personal computers to examine them ourselves. To do this, first create a directory for FastQC and populate it with symbolic links to our fastq files.
+Four different fastq files that are listed in the assignment, SRR6922141_1, SRR6922185_1, SRR6922187_1, and SRR6922236_1, will be used in this pipeline to call variants. We want to know first if these sequences are high quality enough to analyze. If they’re fragmented or inaccurate, then we would normally exclude them from data analysis. To check to see if they are usable,  use FastQC (version 0.11.9) to examine their quality and then download them onto our personal computers to examine them ourselves. To do this, first create a directory for FastQC and populate it with symbolic links to our fastq files.
 
 ```
 mkdir 1_fastqc
