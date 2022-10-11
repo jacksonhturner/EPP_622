@@ -140,7 +140,7 @@ head -n 40 SRR6922187_1_sorted.RG.bam.g.vcf.stats.txt
 head -n 40 SRR6922236_1_sorted.RG.bam.g.vcf.stats.txt
 ```
 
-This for loop generates stats files of each sample, where the number of SNPs and indels is displayed. The number of SNPs and indels are then viewed using the head command, where the first 40 lines of the sample stats files are displayed. There are 330375 SNPs and 4093 indels in SRR6922141_1, 20326 SNPs and 3408 indels in SRR6922185_1, 26256 SNPs and 3698 indels in SRR6922187_1, and 18638 SNPs and 3189 indels in SRR6922236_1.
+This for loop generates stats files of each sample, where the number of SNPs and indels is displayed. The number of SNPs and indels are then viewed using the head command, where the first 40 lines of the sample stats files are displayed. There are 330375 SNPs and 4093 indels in SRR6922141_1, 20,326 SNPs and 3,408 indels in SRR6922185_1, 26,256 SNPs and 3,698 indels in SRR6922187_1, and 18,638 SNPs and 3,189 indels in SRR6922236_1.
 
 Visualize some of this variaiton with IGV! IGV stands for Integrated Genomics Viewer – it can display different genome alignments together for easy comparison. First, download the requisite files to use IGV onto a personal computer. The reference genome, its index, a bam file, and an indexed bam file are necessary for this step. I’ll be using SRR6922141_1 for this exercise. Now, download these files.
 
@@ -213,7 +213,7 @@ bcftools stats solenopsis_combined.vcf.gz > solenopsis_combined.vcf.stats.txt
 head -n 40 solenopsis_combined.vcf.stats.txt
 ```
 
-We have 52557 SNPs across these four samples. Now, to filter our SNPs to capture only high quality ones. First,  decompress the combined vcf file before applying our filters.
+We have 52,557 SNPs across these four samples. Now, to filter our SNPs to capture only high quality ones. First,  decompress the combined vcf file before applying our filters.
 
 ```
 gunzip solenopsis_combined.vcf.gz
@@ -242,7 +242,7 @@ bcftools stats -f "PASS,." solenopsis_combined.GATKfilters.vcf > solenopsis_comb
 grep 'number of SNPs:' *stats.txt
 ```
 
-There were 52557 SNPs before filtering and 36851 after.
+There were 52,557 SNPs before filtering and 36,851 after.
 
 # Answers to selected questions on the assignment prompt:
 
@@ -253,10 +253,10 @@ b.) Before trimming, SRR6922141_1 had 1,148,398 reads -- after trimming, SRR6922
 
 c.) Looking at the stats file for SRR6922141_1, it contains 1,051,910 reads that were mapped while 3,160 were supplementary. For SRR6922236_1, 922,747 reads were mapped and 1,446 were supplementary. For SRR6922185_1, 1,225,386 reads were mapped and 1,829 were supplementary. For SRR6922187_1, 986,550 reads were mapped and 2,867 were supplementary.
 
-d.) The number of SNPs and indels are then viewed using the head command, where the first 40 lines of the sample stats files are displayed. There are 330375 SNPs and 4093 indels in SRR6922141_1, 20326 SNPs and 3408 indels in SRR6922185_1, 26256 SNPs and 3698 indels in SRR6922187_1, and 18638 SNPs and 3189 indels in SRR6922236_1.
+d.) The number of SNPs and indels are then viewed using the head command, where the first 40 lines of the sample stats files are displayed. There are 330375 SNPs and 4093 indels in SRR6922141_1, 20326 SNPs and 3408 indels in SRR6922185_1, 26,256 SNPs and 3,698 indels in SRR6922187_1, and 18,638 SNPs and 3,189 indels in SRR6922236_1.
 
 e.) ![image](https://user-images.githubusercontent.com/80480626/195210732-e04dacbe-5847-4ac4-951d-34a5d73afb5e.png)
 
 As we can see, there’s a SNP in this section of the genome that the vcf file claimed there was. This evidence supports the genotypes called in the VCF file, so they contain at least some information that’s grounded in reality!
 
-extra credit: There were 52557 SNPs before filtering and 36851 after.
+extra credit: There were 52,557 SNPs before filtering and 36,851 after.
