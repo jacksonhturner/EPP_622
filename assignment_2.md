@@ -4,7 +4,7 @@ The purpose of this exercise is to call variants and generate some basic statist
 
 # Step 1: FastQC
 
-We’re analyzing 4 different fastq files that are listed in the assignment, SRR6922141_1, SRR6922185_1, SRR6922187_1, and SRR6922236_1. We want to know first if these sequences are high quality enough to analyze. If they’re fragmented or inaccurate, then we would normally exclude them from data analysis. To check to see if they are usable,  use FastQC (version 0.11.9) to examine their quality and then download them onto our personal computers to examine them ourselves. To do this, first create a directory for FastQC and populate it with symbolic links to our fastq files.
+We’re analyzing four different fastq files that are listed in the assignment, SRR6922141_1, SRR6922185_1, SRR6922187_1, and SRR6922236_1. We want to know first if these sequences are high quality enough to analyze. If they’re fragmented or inaccurate, then we would normally exclude them from data analysis. To check to see if they are usable,  use FastQC (version 0.11.9) to examine their quality and then download them onto our personal computers to examine them ourselves. To do this, first create a directory for FastQC and populate it with symbolic links to our fastq files.
 
 ```
 mkdir 1_fastqc
@@ -82,7 +82,7 @@ cat SRR6922236_1_sorted_bam.stat.txt
 
 Looking at the stats file for SRR6922141_1, it contains 1,051,910 reads that were mapped while 3,160 were supplementary. For SRR6922236_1, 922,747 reads were mapped and 1,446 were supplementary. For SRR6922185_1, 1,225,386 reads were mapped and 1,829 were supplementary. For SRR6922187_1, 986,550 reads were mapped and 2,867 were supplementary.
 
-Now  add read groups to the bam files using samtools and then index them. These read groups are the set of reads that come from each run of a sequencing instrment.
+Now  add read groups to the bam files using samtools and then index them -- these read groups are the set of reads that come from each run of a sequencing instrument.
 
 ```
 spack load openjdk@11.0.8_10%gcc@8.4.1
@@ -161,7 +161,7 @@ From this line, its position (NC_052664.1:1385298) in the reference represents a
 
 ![image](https://user-images.githubusercontent.com/80480626/195210732-e04dacbe-5847-4ac4-951d-34a5d73afb5e.png)
 
-As we can see, there’s a SNP in this section of the genome that the vcf file claimed there was. This evidence supports the genotypes called in the VCF file, so they contain at least some information that’s grounded in reality!
+As we can see, there’s a SNP in this section of the genome that the vcf file claimed there was. This evidence supports the genotypes called in the VCF file, so they contain at least some information that’s grounded in reality! However, it's good practice to examine multiple SNPs and indels in your data with IGV to double check its validity. 
 
 # Step 5: GATK Combine
 
@@ -183,7 +183,7 @@ ln -s /pickett_shared/teaching/EPP622_Fall2022/analysis_test2/jturne88/4_gatk/*g
 
 Now, create a shell script to run so that we can combine the variants using the CombineGVCFs feature of GATK.
 
-``
+``'
 echo "/pickett_shared/software/gatk-4.2.6.1/gatk CombineGVCFs \\
 -R UNIL_Sinv_3.0.fasta \\" >> combine_SNPS.sh
 for f in *g.vcf ; do echo "-variant $f \\" >> combine_SNPS.sh; done
