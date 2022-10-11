@@ -18,6 +18,7 @@ scp jturne88@sphinx.ag.utk.edu:/pickett_shared/teaching/EPP622_Fall2022/analysis
 Now, the html files can be viewed – these provide several informative metrics about the quality of our fastq files. 
 
 SRR6922141_1:
+
 ![image](https://user-images.githubusercontent.com/80480626/195209247-16376f67-a2b6-48da-9cfc-0654c047b203.png)
 
 There isn’t anything egregiously wrong with our samples based on the FastQC reports, so go ahead and move forward with them! 
