@@ -257,6 +257,6 @@ d.) The number of SNPs and indels are then viewed using the head command, where 
 
 e.) ![image](https://user-images.githubusercontent.com/80480626/195210732-e04dacbe-5847-4ac4-951d-34a5d73afb5e.png)
 
-As we can see, there’s a SNP in this section of the genome that the vcf file claimed there was. This evidence supports the genotypes called in the VCF file, so they contain at least some information that’s grounded in reality!
+As we can see, there’s a SNP in this section of the genome that the vcf file claimed there was. This evidence supports the genotypes called in the VCF file, so they contain at least some information that’s grounded in reality! However, it's good practice to examine multiple SNPs and indels in your data with IGV to double check its validity.
 
-extra credit: There were 52,557 SNPs before filtering and 36,851 after.
+Extra Credit: There were 52,557 SNPs before filtering and 36,851 after.
