@@ -1,6 +1,6 @@
 ## EPP 622 Assignment 2
 
-The purpose of this exercise is to call variants and generate some basic statistics for 4 samples. 
+The purpose of this exercise is to call variants and generate some basic statistics for four samples. 
 
 # Step 1: FastQC
 
@@ -183,7 +183,7 @@ ln -s /pickett_shared/teaching/EPP622_Fall2022/analysis_test2/jturne88/4_gatk/*g
 
 Now, create a shell script to run so that we can combine the variants using the CombineGVCFs feature of GATK.
 
-``'
+```
 echo "/pickett_shared/software/gatk-4.2.6.1/gatk CombineGVCFs \\
 -R UNIL_Sinv_3.0.fasta \\" >> combine_SNPS.sh
 for f in *g.vcf ; do echo "-variant $f \\" >> combine_SNPS.sh; done
