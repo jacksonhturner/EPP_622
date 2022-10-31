@@ -1,4 +1,4 @@
-The objective of this assignment is to compare two assemblers, Flye and SOMETHING, using a set of nanopore dogwood chromosome 4 reads as an input. Different assemblers work better for different data, so it's important to review them before performing high-throughput assemblies. 
+The objective of this assignment is to compare two assemblers, Flye and SmartDeNovo, using a set of nanopore dogwood chromosome 4 reads as an input. Different assemblers work better for different data, so it's important to review them before performing high-throughput assemblies. 
 
 Set up your data.
 
@@ -11,14 +11,18 @@ conda activate flye
 conda install -c bioconda flye
 '''
 
-Run flye.
+Run flye. I have version 2.8 so it automatically scaffolds.
 '''
 flye --nano-raw microcitrus_australasica_nanopore.4.fastq --out-dir flye_assembly --threads 20
 '''
 
+Find sequencing statistics. 
+
 Run BUSCO.
 
-Run SOMETHING.
+LongQC.
+
+Run SmartDeNovo.
 
 Run BUSCO.
 
