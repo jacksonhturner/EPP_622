@@ -39,3 +39,16 @@ Compare them.
         |1430   Missing BUSCOs (M)                        |
         |1614   Total BUSCO groups searched               |
         --------------------------------------------------
+
+
+        --------------------------------------------------
+        |Results from dataset embryophyta_odb10           |
+        --------------------------------------------------
+        |C:9.5%[S:9.3%,D:0.2%],F:1.0%,M:89.5%,n:1614      |
+        |154    Complete BUSCOs (C)                       |
+        |150    Complete and single-copy BUSCOs (S)       |
+        |4      Complete and duplicated BUSCOs (D)        |
+        |16     Fragmented BUSCOs (F)                     |
+        |1444   Missing BUSCOs (M)                        |
+        |1614   Total BUSCO groups searched               |
+        --------------------------------------------------
