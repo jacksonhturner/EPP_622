@@ -27,3 +27,15 @@ Run SmartDeNovo.
 Run BUSCO.
 
 Compare them.
+
+        --------------------------------------------------
+        |Results from dataset embryophyta_odb10           |
+        --------------------------------------------------
+        |C:10.0%[S:9.3%,D:0.7%],F:1.4%,M:88.6%,n:1614     |
+        |161    Complete BUSCOs (C)                       |
+        |150    Complete and single-copy BUSCOs (S)       |
+        |11     Complete and duplicated BUSCOs (D)        |
+        |23     Fragmented BUSCOs (F)                     |
+        |1430   Missing BUSCOs (M)                        |
+        |1614   Total BUSCO groups searched               |
+        --------------------------------------------------
