@@ -16,13 +16,15 @@ Run flye. I have version 2.8 so it automatically scaffolds.
 flye --nano-raw microcitrus_australasica_nanopore.4.fastq --out-dir flye_assembly --threads 20
 '''
 
-Find sequencing statistics. 
+Find sequencing statistics with bbmap.
 
 Run BUSCO.
 
 LongQC.
 
 Run SmartDeNovo.
+
+
 
 Run BUSCO.
 
