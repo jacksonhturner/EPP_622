@@ -14,7 +14,6 @@ Load in your data for this assignment by creating a soft link to the nanopore do
 
 ```
 ln -s /pickett_shared/teaching/EPP622_Fall2022/raw_data/citrus_test2/microcitrus_australasica_nanopore.4.fastq .
-
 ```
 
 LongQC goes here. At the moment it doesn't work for nanopore reads, but if you want to QC PacBio or any other read type you can!
@@ -63,7 +62,7 @@ cd flye_assembly
 /sphinx_local/software/bbmap/stats.sh -Xmx20g in=flye_assembly/assembly.fasta > assembly_stats.txt
 less assembly_stats.txt
 ```
-This file displays the following output. These results will be discussed at the end of this document to compare the assemblers for this assignment.
+This file displays the following output. These results will be discussed at the end of this document to compare the Flye assembly with the SmartDeNovo assembly for this assignment.
 
 ```
 Main genome scaffold total:             639
@@ -105,6 +104,7 @@ Run BUSCO, navigate to the directory it creates, and view the output with less.
 
 ```
 busco -i ../2_flye_assembly/flye_assembly/assembly.fasta -m genome -l embryophyta -c 2 --out flye_assembly.BUSCO
+conda deactivate
 cd flye_assembly.BUSCO
 less short_summary.specific.embryophyta_odb10.flye_assembly.BUSCO.txt
 ```
@@ -177,7 +177,9 @@ Create a new directory for BUSCO and navigate to it. Then, run BUSCO on the Smar
 cd ..
 mkdir 5_smartdenovo_busco
 cd 5_smartdenovo_busco
+conda activate busco
 busco -i ../4_smartdenovo_assembly/microcitrus_australasica.dmo.cns -m genome -l embryophyta -c 2 --out SDN_assembly.BUSCO
+conda deactivate
 cd SDN_assembly.BUSCO
 less short_summary.specific.embryophyta_odb10.SDN_assembly.BUSCO.txt
 ```
