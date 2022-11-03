@@ -224,9 +224,9 @@ Ultimately, the choice of best assembler will depend on how one would want to an
 
 ## Feedback for AgBioData Video
 
-I don't know much about the standards for this presentation, but the PowerPoint presented in this video seems a little basic. While it's serviceable as a vehicle for the ideas of the presentation, it seems more like a draft than a finished product. There are some grammar errors in the PowerPoint itself and strange skips in the recording that, while nitpicky to point out, subtract from the experience. The section describing IPA in the standard format and controlled vocabularies file could be explained a little better -- I was unsure if it referred to one nucleotide base or a combination of several. I think adding the part about other stakeholders benefitting from FAIR principles is a smart idea! 
+I don't know much about the standards for this presentation, but the PowerPoint presented in this video seems a little basic. While it's serviceable as a vehicle for the ideas of the presentation, it seems more like a draft than a finished product. There are some grammar errors in the PowerPoint itself and strange skips in the recording that, while nitpicky to point out, subtract from the presentation. The section describing IPA in the standard format and controlled vocabularies file could be explained a little better -- I was unsure if it referred to one nucleotide base or a combination of several. I think adding the part about other stakeholders benefitting from FAIR principles is a smart idea! 
 
-I also wonder how much overlap there is between this FAIR lesson and the previous one. 
+Overall, I think this AgBioData video is a strong complement to the first lesson, and it clearly outlines the FAIR principles!
 
 ## References
 
