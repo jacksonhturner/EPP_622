@@ -224,9 +224,9 @@ Ultimately, the choice of best assembler will depend on how one would want to an
 
 ## Feedback for AgBioData Video
 
-I don't know much about the standards for this presentation, but the PowerPoint presented in this video seems a little basic. While it's serviceable as a vehicle for the ideas of the presentation, it seems more like a draft than a finished product. There are some grammar errors in the PowerPoint itself and strange skips in the recording that, while nitpicky to point out, subtract from the presentation. The section describing IPA in the standard format and controlled vocabularies file could be explained a little better -- I was unsure if it referred to one nucleotide base or a combination of several. I think adding the part about other stakeholders benefitting from FAIR principles is a smart idea! 
+Overall, I think this AgBioData video is a strong complement to the first lesson, and it clearly outlines the FAIR principles! Despite that, I feel there are some (mostly minor) improvements that can be made to the video.
 
-Overall, I think this AgBioData video is a strong complement to the first lesson, and it clearly outlines the FAIR principles!
+There are some grammar errors in the PowerPoint -- they don't subtract from the message of the presentation, but it wouldn't hurt to fix them if there was an opportunity. There are some strange strange skips in the recording that subtract from the presentation and could probably be solved with some quick video editing or a re-recording. I felt that the marker allele example of the Interoperability section was hard to understand, even after a rewatch. Maybe another example would be more accessible, especially to those who aren't super familiar with molecular biology. The data ontology section with the plant was a good example, as the analogy of different parts of a plant was easy to understand. I think adding the part about other, non-scientist stakeholders benefitting from FAIR principles is a smart idea! 
 
 ## References
 
