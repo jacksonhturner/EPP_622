@@ -220,7 +220,7 @@ The BUSCO statistics generally describe completeness of an assembly, measured in
 
 According to BUSCO, the Flye assemby is more complete because it has slightly more complete BUSCOs and less missing BUSCOs than the SmartDeNovo assembly. However, the Flye assembly has more fragmented and complete/duplicated and fragmented BUSCOs. Referencing our output from BBMap, this comparison of BUSCO values makes sense because there are more overall bases present in the Flye assembly than in the SmartDeNovo assembly but also many more gaps. 
 
-Ultimately, the choice of best assembler will depend on how you one would want to analyze an assembly. **Flye's assembly contains more information (including slightly more complete BUSCOs) but is also much more fragmented, while SmartDeNovo's is probably a better assembly by conventional standards, but contains somewhat less information.** 
+Ultimately, the choice of best assembler will depend on how one would want to analyze an assembly. **Flye's assembly contains more information (including slightly more complete BUSCOs) but is also much more fragmented, while SmartDeNovo's is probably a better assembly by conventional standards, but contains somewhat less information.** 
 
 ## Feedback for AgBioData Video
 
