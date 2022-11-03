@@ -2,7 +2,9 @@
 
 The objective of this assignment is to compare two assemblers, Flye and SmartDeNovo, using a set of nanopore dogwood chromosome 4 reads as an input. Different assemblers work better for different data, so it's important to review them before performing high-throughput assemblies. 
 
-## Step 1: Loading in Data (and LongQC if it works)
+At the end, I also provide some feedback about the most recent AgBioData video.
+
+## Step 1: Loading in Data 
 
 First, create a directory to deposit the raw data.
 ```
@@ -12,13 +14,13 @@ cd 1_raw_data
 
 Load in your data for this assignment by creating a soft link to the nanopore dogwood chromosome 4 reads. The path for these reads exists within the pickett_shared directory within this class's raw data. 
 
-At the end is some (hoepfully useful) feedback for the recent AgBioData video presented on 11/3.
+At the end is some (hopefully useful) feedback for the recent AgBioData video presented on 11/3.
 
 ```
 ln -s /pickett_shared/teaching/EPP622_Fall2022/raw_data/citrus_test2/microcitrus_australasica_nanopore.4.fastq .
 ```
 
-LongQC goes here. At the moment it doesn't work for nanopore reads, but if you want to QC PacBio or any other read type you can!
+Generally, it's good practice to use LongQC at this stage of analysis to determine the quality of your long reads. However, because the nanopore_lq.py script on the server doesn't work for these reads, I will not be performing it in this assignment.
 
 ## Step 2: Perform Assembly With Flye
 
