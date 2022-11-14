@@ -52,7 +52,7 @@ Now that Flye is installed, double check the version number.
 conda list flye
 ```
 
-Due to some quirk of my personal miniconda3, the following commands installed Flye version 2.8.1.
+Due to some quirk of my personal miniconda3, the preceding commands installed Flye version 2.8.1.
 
 Next, perform the assembly using Flye, referencing its github (https://github.com/fenderglass/Flye) for whatever specifications needed for the data. Because I've installed Flye version 2.8.1, the assembler automatically scaffolds the assembly without a flag. This command lists using 10 threads, but use however many is appropriate for your computational needs and availability. This will take a few minutes, so feel free to run this in screen. Otherwise, now might be a good oportunity to make yourself some hot tea or do something else to enjoy yourself :)
 
