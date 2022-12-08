@@ -1,4 +1,4 @@
-This assignment is designed to fulfill option 2 for EPP 622 test 4. 
+# This assignment is designed to fulfill option 1 for EPP 622 test 4. 
 
 Option 1 - RNASEQ - I want to learn more about Isaac and RNA read mapping. The instructions to the assignment are shown below (to be deleted later):
  
@@ -16,8 +16,7 @@ If you get a “bus error” for salmon try increasing ram to 8G instead of 4G a
 I have NOT removed the nongene categories from the tsv files (“ambiguous”, “no feature”, etc)
  
 Grading:
-Results (15/25) - can be separate or embedded in the wiki documentation
- # of reads for each library
+Results (15/25) - can be separate or embedded in the wiki documentation of reads for each library
  STAR: Build a table with the 12 libraries as rows and the following columns from the output files (grep and sed are useful friends here):
 Uniquely mapped reads %
 % of reads mapped to multiple loci
