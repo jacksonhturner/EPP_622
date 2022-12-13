@@ -5,6 +5,27 @@ Option 1 - RNASEQ - I want to learn more about Isaac and RNA read mapping. The i
 The goal.
 Map 12 fastq files to the peach genome with star and salmon and examine how reads are being assigned by each strategy.
 
+
+```
+for FILE in *.final.out; do ls $FILE >> STAR_uniquely_mapped_reads.txt; grep -E 'Uniquely mapped reads %' $FILE >> STAR_uniquely_mapped_reads.txt; done
+for FILE in *.final.out; do ls $FILE >> STAR_multiple_loci_reads.txt; grep -E '% of reads mapped to multiple loci' $FILE >> STAR_multiple_loci_reads.txt; done
+for FILE in *.final.out; do ls $FILE >> STAR_too_many_loci_reads.txt; grep -E '% of reads mapped to too many loci' $FILE >> STAR_too_many_loci_reads.txt; done
+for FILE in *.final.out; do ls $FILE >> STAR_too_many_mismatches_reads.txt; grep -E '% of reads unmapped: too many mismatches' $FILE >> STAR_too_many_mismatches_reads.txt; done
+for FILE in *.final.out; do ls $FILE >> STAR_too_short_reads.txt; grep -E '% of reads unmapped: too short' $FILE >> STAR_too_short_reads.txt; done
+for FILE in *.final.out; do ls $FILE >> STAR_unmapped_other_reads.txt; grep -E '% of reads unmapped: other' $FILE >> STAR_unmapped_other_reads.txt; done
+for FILE in *.final.out; do ls $FILE >> STAR_chimeric_reads.txt; grep -E '% of chimeric reads' $FILE >> STAR_chimeric_reads.txt; done
+```
+
+```
+for FILE in slurm*; do grep -E 'readonefile is' $FILE >> salmon_mapping_table.txt; grep -E 'Number of mappings discarded because of alignment score' $FILE >> salmon_mapping_table.txt; grep -E 'Number of fragments entirely discarded because of alignment score' $FILE >> salmon_mapping_table.txt; grep -E 'Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets' $FILE >> salmon_mapping_table.txt; grep -E 'Number of fragments discarded because they are best-mapped to decoys' $FILE >> salmon_mapping_table.txt; grep -E 'Number of fragments discarded because they have only dovetail' $FILE >> salmon_mapping_table.txt; grep -E 'Mapping rate' $FILE >> salmon_mapping_table.txt; done
+```
+
+```
+for FOLDER in *_out; do echo $FOLDER >> salmon_gene_mapping.txt; grep -E 'Prupe.6G364900.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G531100.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G531100.2' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G531400.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G549600.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G549600.2' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G549600.3' $FOLDER/quant.sf >> salmon_gene_mapping.txt; done
+```
+
+
+
 The set up.
 There are 12 fastq files in /lustre/isaac/proj/UTK0208/test4/raw_data
 Experimental design: 2 apricot cultivars (Badami and Bergeron), 2 time points (400 chill hours and 800 chill hours), 3 biological reps (here labeled as “clones”)
