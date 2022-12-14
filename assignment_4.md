@@ -1,4 +1,6 @@
-# This assignment is designed to fulfill option 1 for EPP 622 test 4. 
+### Assignment 4: Compare Read Mapping with STAR and Salmon 
+
+Assignment description
  
 # FastQC
 
@@ -53,7 +55,8 @@ Eventually the FastQC runs will finish. Upon checking them, their read quality i
 
 STAR (Spliced Transcriptomes to A Reference) is a read mapper that uses a previously undescribed RNA-Seq aligment algorithm to map reads from RNA-Seq data. [1] Make the directory for this analysis, navitage to it, and populate it with the same fastq files as in the `1_fastqc` directory.
 ```
-mkdir 2_star
+mkdir ../2_star
+cd 2_star
 ln -s /lustre/isaac/proj/UTK0208/test4/raw_data/*fastq* .
 ```
 
@@ -76,7 +79,17 @@ line 9: memory dedicated to job per cpu
 line 10: use an array with 12 components (our 12 fastq files)
 line 11: when to mail the results of the job
 line 12: which address to mail the job
-For the script itself, it creates a variable, `readonefile` from the file selected by the task array file we previously generated. 
+
+For the script itself, it creates a variable, `readonefile` from the file selected by the task array file we previously generated. For troubleshooting purposes, the name of this variable is repeated. This script then loads the `star` module, and executes the `STAR` command with the following parameters. The first is the indexing directory, which has already been provided by Dr. Meg Staton. The second lists the number of threads required for the job. The third shows the input fastq file for the command. The fourth provides the prefix for the output file, the fifth shows the output file type, and the sixth shows how you want to quantify the results.
+For our purposes, we'll load in the current file at each step of the array (readonefile) and request STAR to provide read counts of mapped genes (GeneCounts). 
+
+Create this script with `nano`.
+
+```
+nano star.qsh
+```
+
+Paste the following into the script and save it.
 
 ```
 #!/bin/bash
@@ -102,11 +115,79 @@ STAR \
 --runThreadN 2 \
 --readFilesIn $readonefile \
 --outFileNamePrefix $readonefile \
---outSAMtype BAM SortedByCoordinate;
+--outSAMtype BAM SortedByCoordinate \
+--quantMode TranscriptomeSAM GeneCounts;
 done
 ```
 
-# Salmon
+Run the script with `sbatch`.
+```
+sbatch star.qsh
+```
+
+While this job is running (you can check its status with `squeue` -- if it finishes quickly, something went wrong and you'll need to re-consult this input), we'll move on to running salmon.
+
+# Mapping reads with Salmon
+
+Salmon, like STAR, is a read mapper that identifies the abundances of genes in RNA-seq data [2]. Notably, it's the first read mapper of its kind to correct for GC content bias, making it more accurate [2]. Make a directory for it, navigate to it, and populate it with the fastq files as we did for the `2_star` directory.
+
+```
+mkdir ../3_salmon
+cd ../3_salmon
+ln -s /lustre/isaac/proj/UTK0208/test4/raw_data/*fastq* .
+```
+
+Create the fastq array as we did for the same step in our STAR analysis. It's worth noting I gave this array a different name. 
+
+```
+for FILE in *.fastq; do ls $FILE >> salmon_array.txt; done
+```
+
+Now that the fastq array is completed for this analysis, we'll now build its script to submit to ISAAC. The first 12 lines have the same parameters as the script for the STAR analysis, but have their parameters changed slightly to use more cores to run the job over less time. The `readonefile` variable is also constructed the same way, but a new variable, `quantdir` is created instead and echoed in the same way for troubleshooting. This script will then run Salmon, which is installed in a nother directory that we path to. The  arguments for this command are as follows: The index for the command, which is provided by Dr. Meg Staton; the library type; the input reads (since this is single-end data, the `--unmatedReads` parameter is given); the output directory; and the number of threads to run the job.
+
+Create this script with `nano`.
+
+```
+nano salmon.qsh
+```
+
+Paste the following into the script and save it.
+
+```
+#!/bin/bash
+#SBATCH -J salmonTA
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH -A ISAAC-UTK0208
+#SBATCH -p condo-epp622
+#SBATCH -q condo
+#SBATCH -t 00:20:00
+#SBATCH --mem-per-cpu=8G
+#SBATCH --array=1-12
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=jturne88@vols.utk.edu
+
+readonefile=$(sed -n -e "${SLURM_ARRAY_TASK_ID} p" salmon_array.txt)
+echo "readonefile is $readonefile"
+quantdir=$(echo $readonefile | sed  's/.fastq/_out/')
+echo "quantdir is $quantdir"
+
+/lustre/isaac/proj/UTK0208/rnaseq/software/salmon-1.9.0_linux_x86_64/bin/salmon \
+quant \
+-i /lustre/isaac/proj/UTK0208/rnaseq/raw_data/salmon_transcripts_index \
+-l IU \
+--unmatedReads $readonefile \
+--validateMappings \
+-o $quantdir \
+--threads 8
+```
+
+Submit the job to ISAAC with `sbatch`.
+```
+sbatch salmon.qsh
+```
+
+Eventually, these jobs will finish. When they do, we can populate the results table for this assignment.
 
 # Populating Results Table
 
@@ -134,7 +215,7 @@ for FILE in *.final.out; do ls $FILE >> STAR_chimeric_reads.txt; grep -E '% of c
 less STAR_uniquely_mapped_reads.txt
 ```
 
-We'll move on to section of the table describing how salmon mapped these reads. Below is a similar script that uses `grep -E` to grab each line and put it into one file instead of several seperate ones. Unlike the previous script, the relevant information for the results table is located in the individual slurm files. This structure is a better approach to gathering the relevant information and will be used henceforth for populating the results table. Navigate to the `3_salmon` directory and run the following script:
+We'll move on to the section of the table describing how salmon mapped these reads. Below is a similar script that uses `grep -E` to grab each line and put it into one file instead of several seperate ones. Unlike the previous script, the relevant information for the results table is located in the individual slurm files. This structure is a better approach to gathering the relevant information and will be used henceforth for populating the results table. Navigate to the `3_salmon` directory and run the following script:
 As with this script and for all scripts used to generate results for the table, the output of the following script was used to populate the results table.
 
 ```
@@ -186,3 +267,4 @@ grep -E 'Prupe.1G549600.3' $FOLDER/quant.sf >> salmon_gene_mapping.txt; done
 
 1. Alexander Dobin, Carrie A. Davis, Felix Schlesinger, Jorg Drenkow, Chris Zaleski, Sonali Jha, Philippe Batut, Mark Chaisson, Thomas R. Gingeras, STAR: ultrafast universal RNA-seq aligner, Bioinformatics, Volume 29, Issue 1, January 2013, Pages 15–21, https://doi.org/10.1093/bioinformatics/bts635
 
+2. Patro, R., Duggal, G., Love, M. et al. Salmon provides fast and bias-aware quantification of transcript expression. Nat Methods 14, 417–419 (2017). https://doi.org/10.1038/nmeth.4197
