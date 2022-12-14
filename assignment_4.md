@@ -5,6 +5,80 @@ Option 1 - RNASEQ - I want to learn more about Isaac and RNA read mapping. The i
 The goal.
 Map 12 fastq files to the peach genome with star and salmon and examine how reads are being assigned by each strategy.
 
+First, run FastQC on the files. FastQC allows us to visualize our read quality prior to further analysis. If FastQC reports generated from some of our data display unideal results, it may be worth considering excluding them from downstream analysis. 
+
+Create a directory to perform FastQC, navigate to it, and populate it with our data.
+```
+mkdir 1_fastqc
+cd 1_fastqc
+ln -s /lustre/isaac/proj/UTK0208/test4/raw_data/*fastq* .
+```
+
+Run FastQC though isaac by making a shell script and executing it with `sbatch`
+```
+nano fastqc.qsh
+```
+
+Paste the following in to this shell script:
+```
+#!/bin/bash
+#SBATCH -J fastqc
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH -A ISAAC-UTK0208
+#SBATCH -p condo-epp622
+#SBATCH -q condo
+#SBATCH -t 00:30:00
+
+module load fastqc
+
+fastqc *fastq
+```
+
+Execute the script using `sbatch`.
+```
+sbatch fastqc.qsh
+```
+
+You can view the status of jobs submitted to ISAAC with `squeue`
+```
+squeue -u [your user ID]
+```
+
+
+
+star
+make star directory
+```
+mkdir 2_star
+ln -s /lustre/isaac/proj/UTK0208/test4/raw_data/*fastq* .
+
+#!/bin/bash
+#SBATCH -J star-map
+#SBATCH --nodes=1
+#SBATCH --ntasks=2
+#SBATCH -A ISAAC-UTK0208
+#SBATCH -p condo-epp622
+#SBATCH -q condo
+#SBATCH -t 00:30:00
+#SBATCH --mem-per-cpu=8G
+#SBATCH --array=1-12
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=jturne88@vols.utk.edu
+
+readonefile=$(sed -n -e "${SLURM_ARRAY_TASK_ID} p" fastq_array.txt)
+echo "readonefile is $readonefile"
+
+module load star
+for FILE in *.fastq; do  \
+STAR \
+--genomeDir /lustre/isaac/proj/UTK0208/rnaseq/raw_data/STAR_gtf_idx \
+--runThreadN 2 \
+--readFilesIn $readonefile \
+--outFileNamePrefix $readonefile \
+--outSAMtype BAM SortedByCoordinate;
+done
+```
 
 ```
 for FILE in *.final.out; do ls $FILE >> STAR_uniquely_mapped_reads.txt; grep -E 'Uniquely mapped reads %' $FILE >> STAR_uniquely_mapped_reads.txt; done
