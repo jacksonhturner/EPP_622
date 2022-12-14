@@ -1,8 +1,8 @@
-### Assignment 4: Compare Read Mapping with STAR and Salmon 
+# Assignment 4: Compare Read Mapping with STAR and Salmon 
 
-Assignment description
+Assignment description. MAKE ME MAKE ME MAKE ME MAKE ME MAKE ME MAKE ME MAKE ME MAKEM MEK AMKE ME MAKE ME MAKEM ME AMKE ME MAKEM ME AMKEM ME AMKEM ME MAKEM ME 
  
-# FastQC
+### FastQC
 
 Log into ISAAC and fulfill the authentication requirements.
 ```
@@ -19,6 +19,7 @@ ln -s /lustre/isaac/proj/UTK0208/test4/raw_data/*fastq* .
 ```
 
 Run FastQC though isaac by making a shell script and executing it with `sbatch`
+
 ```
 nano fastqc.qsh
 ```
@@ -51,7 +52,7 @@ squeue -u [your user ID]
 
 Eventually the FastQC runs will finish. Upon checking them, their read quality is good enough to proceed with mapping. 
 
-# Mapping reads with STAR
+### Mapping reads with STAR
 
 STAR (Spliced Transcriptomes to A Reference) is a read mapper that uses a previously undescribed RNA-Seq aligment algorithm to map reads from RNA-Seq data. [1] Make the directory for this analysis, navitage to it, and populate it with the same fastq files as in the `1_fastqc` directory.
 ```
@@ -127,7 +128,7 @@ sbatch star.qsh
 
 While this job is running (you can check its status with `squeue` -- if it finishes quickly, something went wrong and you'll need to re-consult this input), we'll move on to running salmon.
 
-# Mapping reads with Salmon
+### Mapping reads with Salmon
 
 Salmon, like STAR, is a read mapper that identifies the abundances of genes in RNA-seq data [2]. Notably, it's the first read mapper of its kind to correct for GC content bias, making it more accurate [2]. Make a directory for it, navigate to it, and populate it with the fastq files as we did for the `2_star` directory.
 
@@ -189,7 +190,7 @@ sbatch salmon.qsh
 
 Eventually, these jobs will finish. When they do, we can populate the results table for this assignment.
 
-# Populating Results Table
+### Populating Results Table
 
 We'll be populating the table describing the results of the STAR and salmon analyses previously run. The finished table is in the github labeled `assignment_4_results.xlsx`. First, determine the number of reads per each fastq file. I do this by navigating to the `1_fastqc` directory and using the following script to generate a list of line lengths of each file. Because fastq files one read per every four lines, I divided the output from this script by 4 and populated each value in the table. 
 
@@ -246,7 +247,7 @@ grep -E 'Prupe.1G549600' $FILE >> star_gene_mapping.txt; done
 less star_gene_mapping.txt
 ```
 
-
+The section detailing the number of reads per gene in the Salmon analysis will now be populated. Some of these genes have different numbers of transcripts that must be accounted for. This script uses `grep -E` like the others to grab the lines associated with each query. The last column in this generated file is what is used to populate the results table, as it contains the number of mapped reads per gene. Once this final file is created, use `less` to view its contents and populate the results table for the last time.
 
 ```
 cd ../3_salmon
@@ -260,7 +261,8 @@ grep -E 'Prupe.1G549600.2' $FOLDER/quant.sf >> salmon_gene_mapping.txt;
 grep -E 'Prupe.1G549600.3' $FOLDER/quant.sf >> salmon_gene_mapping.txt; done
 ```
 
-# Write-Up
+### Write-Up
+
 
 
 # References
