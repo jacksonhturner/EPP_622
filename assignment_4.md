@@ -91,11 +91,33 @@ for FILE in *.final.out; do ls $FILE >> STAR_chimeric_reads.txt; grep -E '% of c
 ```
 
 ```
-for FILE in slurm*; do grep -E 'readonefile is' $FILE >> salmon_mapping_table.txt; grep -E 'Number of mappings discarded because of alignment score' $FILE >> salmon_mapping_table.txt; grep -E 'Number of fragments entirely discarded because of alignment score' $FILE >> salmon_mapping_table.txt; grep -E 'Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets' $FILE >> salmon_mapping_table.txt; grep -E 'Number of fragments discarded because they are best-mapped to decoys' $FILE >> salmon_mapping_table.txt; grep -E 'Number of fragments discarded because they have only dovetail' $FILE >> salmon_mapping_table.txt; grep -E 'Mapping rate' $FILE >> salmon_mapping_table.txt; done
+for FILE in slurm*; 
+do grep -E 'readonefile is' $FILE >> salmon_mapping_table.txt; 
+grep -E 'Number of mappings discarded because of alignment score' $FILE >> salmon_mapping_table.txt; 
+grep -E 'Number of fragments entirely discarded because of alignment score' $FILE >> salmon_mapping_table.txt; 
+grep -E 'Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets' $FILE >> salmon_mapping_table.txt; 
+grep -E 'Number of fragments discarded because they are best-mapped to decoys' $FILE >> salmon_mapping_table.txt; 
+grep -E 'Number of fragments discarded because they have only dovetail' $FILE >> salmon_mapping_table.txt; 
+grep -E 'Mapping rate' $FILE >> salmon_mapping_table.txt; done
 ```
 
 ```
-for FOLDER in *_out; do echo $FOLDER >> salmon_gene_mapping.txt; grep -E 'Prupe.6G364900.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G531100.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G531100.2' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G531400.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G549600.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G549600.2' $FOLDER/quant.sf >> salmon_gene_mapping.txt; grep -E 'Prupe.1G549600.3' $FOLDER/quant.sf >> salmon_gene_mapping.txt; done
+for FILE in *ReadsPerGene.out.tab; do echo $FILE >> star_gene_mapping.txt;  
+grep -E 'Prupe.6G364900' $FILE >> star_gene_mapping.txt;  
+grep -E 'Prupe.1G531100' $FILE >> star_gene_mapping.txt;  
+grep -E 'Prupe.1G531400' $FILE >> star_gene_mapping.txt;  
+grep -E 'Prupe.1G549600' $FILE >> star_gene_mapping.txt; done
+```
+
+```
+for FOLDER in *_out; do echo $FOLDER >> salmon_gene_mapping.txt; 
+grep -E 'Prupe.6G364900.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; 
+grep -E 'Prupe.1G531100.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; 
+grep -E 'Prupe.1G531100.2' $FOLDER/quant.sf >> salmon_gene_mapping.txt; 
+grep -E 'Prupe.1G531400.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; 
+grep -E 'Prupe.1G549600.1' $FOLDER/quant.sf >> salmon_gene_mapping.txt; 
+grep -E 'Prupe.1G549600.2' $FOLDER/quant.sf >> salmon_gene_mapping.txt; 
+grep -E 'Prupe.1G549600.3' $FOLDER/quant.sf >> salmon_gene_mapping.txt; done
 ```
 
 
