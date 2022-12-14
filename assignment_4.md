@@ -261,8 +261,11 @@ grep -E 'Prupe.1G549600.2' $FOLDER/quant.sf >> salmon_gene_mapping.txt;
 grep -E 'Prupe.1G549600.3' $FOLDER/quant.sf >> salmon_gene_mapping.txt; done
 ```
 
-### Write-Up
+### Overall Conclusions
 
+According to both read mappers, the 400CH group has a much higher number of reads mapped than the 800CH group across all genes and samples. This has implications about the two treatments, though I am ignorant as I am to what they may be. :) Despite these samples being constructed from apricots, they map well to the provided peach genome, speaking to the relatedness of the two trees. 
+
+STAR seems to have a higher mapping rate than Salmon and more mapped reads. Some genes are better mapped by STAR than Salmon and vice versa. Prupe.1G531100.1 is dominant to Prupe.1G531100.2, but Prupe.1G549600.1, Prupe.1G549600.2, and Prupe.1G549600.3 each are dominant in different taxa. The fact that some read mappers have different results than others demonstrate the importance of using multiple read mappers in RNA-Seq analysis. Each read mapper also displays different measurements of how well it mapped compared to others. The same is true for including different transcripts, as some are more dominant in some samples than others. While STAR seems to have higher overall mapping ability than Salmon, the ability to hsow multiple transcripts can be informative for some research questions. 
 
 
 # References
