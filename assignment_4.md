@@ -1,6 +1,8 @@
 # Assignment 4: Compare Read Mapping with STAR and Salmon 
 
-Assignment description. MAKE ME MAKE ME MAKE ME MAKE ME MAKE ME MAKE ME MAKE ME MAKEM MEK AMKE ME MAKE ME MAKEM ME AMKE ME MAKEM ME AMKEM ME AMKEM ME MAKEM ME 
+The goal of this assignment is to compare the read mapping statistics and read abundances from two different read mappers for RNA-Seq data, STAR, and Salmon. By comparing these two read mappers, we can understand the characteristics of each read mapper and the differences in their output. 
+
+For this project, we'll be using 12 fastq files, each representing apricots of different cultivars, time periods, and biological replicates, and mapping them to a peach genome. 
  
 ### FastQC
 
